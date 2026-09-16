@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Story | Hafsa The Great</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .story-page {
+      min-height: 100vh;
+      padding: 150px 24px 80px;
+    }
+    .story-intro {
+      text-align: center;
+      margin: 0 auto 34px;
+      max-width: 760px;
+    }
+    .story-intro h1 { margin-bottom: 8px; }
+    .story-intro p:last-child { opacity: .78; }
+    .story-viewer {
+      width: min(100%, 1024px);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+    .story-page-frame {
+      width: 100%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.16);
+      box-shadow: 0 24px 70px rgba(0,0,0,.32);
+    }
+    .story-page-frame img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    .story-controls {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .story-nav-btn {
+      min-width: 140px;
+    }
+    .story-counter {
+      min-width: 105px;
+      text-align: center;
+      font-size: .92rem;
+      opacity: .72;
+      letter-spacing: .04em;
+    }
+    .story-dots {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+    }
+    .story-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      border: 0;
+      padding: 0;
+      background: rgba(255,255,255,.3);
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .story-dot.active {
+      transform: scale(1.35);
+      background: rgba(255,255,255,.9);
+    }
+    .story-hint {
+      margin-top: 2px;
+      font-size: .8rem;
+      opacity: .5;
+      text-align: center;
+    }
+    @media (max-width: 700px) {
+      .story-page { padding: 125px 10px 55px; }
+      .story-intro { margin-bottom: 22px; }
+      .story-page-frame { border-radius: 10px; }
+      .story-controls { gap: 10px; }
+      .story-nav-btn { min-width: 120px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cursor-glow"></div>
+  <div class="floating-bg"></div>
+
+  <nav class="navbar glass">
+    <a href="index.html" class="logo">Hafsa The Great</a>
+    <div class="nav-links">
+      <a href="cake.html">Cake</a>
+      <a href="memories.html" class="active">Story</a>
+      <a href="reasons.html">Reasons</a>
+      <a href="letter.html">Letter</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="final.html">Final</a>
+    </div>
+  </nav>
+
+  <main class="story-page">
+    <header class="story-intro reveal">
+      <p class="script-text">a tale worth remembering</p>
+      <h1>The Story</h1>
+      <p>Seven pages. One very questionable historical account.</p>
+    </header>
+
+    <section class="story-viewer reveal" aria-label="Story pages">
+      <div class="story-page-frame">
+        <img id="storyImage" src="assets/story-1.png" alt="Story page 1 of 7" />
+      </div>
+
+      <div class="story-controls">
+        <button class="btn secondary story-nav-btn" id="storyPrev" type="button">← Previous</button>
+        <div class="story-counter" id="storyCounter">Page 1 of 7</div>
+        <button class="btn primary story-nav-btn" id="storyNext" type="button">Next →</button>
+      </div>
+
+      <div class="story-dots" id="storyDots" aria-label="Choose story page"></div>
+      <p class="story-hint">Use the arrows, or your keyboard ← →</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    (() => {
+      const totalPages = 7;
+      let currentPage = 1;
+      const image = document.getElementById('storyImage');
+      const counter = document.getElementById('storyCounter');
+      const prev = document.getElementById('storyPrev');
+      const next = document.getElementById('storyNext');
+      const dots = document.getElementById('storyDots');
+
+      for (let i = 1; i <= totalPages; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'story-dot' + (i === 1 ? ' active' : '');
+        dot.setAttribute('aria-label', `Go to story page ${i}`);
+        dot.addEventListener('click', () => showPage(i));
+        dots.appendChild(dot);
+      }
+
+      function showPage(page) {
+        currentPage = Math.max(1, Math.min(totalPages, page));
+        image.src = `assets/story-${currentPage}.png`;
+        image.alt = `Story page ${currentPage} of ${totalPages}`;
+        counter.textContent = `Page ${currentPage} of ${totalPages}`;
+        prev.disabled = currentPage === 1;
+        next.disabled = currentPage === totalPages;
+        prev.style.opacity = currentPage === 1 ? '.45' : '1';
+        next.style.opacity = currentPage === totalPages ? '.45' : '1';
+        [...dots.children].forEach((dot, index) => dot.classList.toggle('active', index + 1 === currentPage));
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      prev.addEventListener('click', () => showPage(currentPage - 1));
+      next.addEventListener('click', () => showPage(currentPage + 1));
+      window.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') showPage(currentPage - 1);
+        if (event.key === 'ArrowRight') showPage(currentPage + 1);
+      });
+
+      showPage(1);
+    })();
+  </script>
+</body>
+</html>

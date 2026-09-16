@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz | Hafsa The Great</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="quiz-page">
+  <div class="cursor-glow"></div>
+  <div class="floating-bg"></div>
+
+  <nav class="navbar glass">
+    <a href="index.html" class="logo">Hafsa The Great</a>
+    <div class="nav-links">
+      <a href="cake.html">Cake</a>
+      <a href="memories.html">Story</a>
+      <a href="reasons.html">Reasons</a>
+      <a href="letter.html">Letter</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="final.html">Final</a>
+    </div>
+  </nav>
+
+  <main class="quiz-shell">
+    <header class="quiz-intro reveal">
+      <p class="script-text">one last little challenge</p>
+      <h1>I know you'll hate it,<br><span>but here's a quiz.</span></h1>
+      <p>There’s a secret present at the end. So try not to embarrass yourself. 😌</p>
+    </header>
+
+    <section class="quiz-layout" aria-label="Birthday quiz">
+      <aside class="quiz-progress glass reveal">
+        <p class="script-text">your progress</p>
+        <div class="progress-line" aria-hidden="true"></div>
+        <ol id="quizProgress" aria-label="Quiz progress"></ol>
+      </aside>
+
+      <div class="quiz-content">
+        <form id="quizForm" class="quiz-form"></form>
+        <button class="btn primary quiz-submit" id="submitQuiz" type="submit" form="quizForm">Check My Score →</button>
+
+        <section class="quiz-result glass" id="quizResult" aria-live="polite" hidden>
+          <p class="script-text">final verdict</p>
+          <div class="quiz-score" id="quizScore">0 / 10</div>
+          <h2 id="quizResultTitle"></h2>
+          <p id="quizResultMessage"></p>
+          <div class="quiz-result-actions">
+            <button class="btn primary" id="enterRealm" type="button" hidden>Enter the Realm →</button>
+            <button class="btn secondary" id="retryQuiz" type="button">Try Again</button>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

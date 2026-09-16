@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reasons | Hafsa The Great</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="cursor-glow"></div>
+  <div class="floating-bg"></div>
+
+  <nav class="navbar glass">
+    <a href="index.html" class="logo">Hafsa The Great</a>
+    <div class="nav-links">
+      <a href="cake.html">Cake</a>
+      <a href="memories.html">Story</a>
+      <a href="reasons.html">Reasons</a>
+      <a href="letter.html">Letter</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="final.html">Final</a>
+    </div>
+  </nav>
+
+  <header class="sub-hero reveal">
+    <p class="script-text">50 tiny reasons why</p>
+    <h1>We Are Friends</h1>
+    <p>Tap and smile</p>
+    <button class="btn primary" id="randomReasonBtn">Click to know the Reasons</button>
+    <div class="random-reason glass" id="randomReason">You ready?</div>
+  </header>
+
+  <section class="reason-grid" id="reasonGrid" data-reason-count="50">
+  </section>
+
+  <footer class="footer">50 reasons and still not enough ✦</footer>
+
+  <div class="music-hint" id="musicHint" aria-hidden="true">
+    <span class="music-hint-text">Tap here to make the experience better</span>
+    <span class="music-hint-arrow" aria-hidden="true">↘</span>
+  </div>
+  <button class="music-btn" id="musicBtn" aria-label="Play music" title="Play music">♪</button>
+  <audio id="backgroundMusic" src="assets/hafsa-birthday-song.mp3" preload="metadata" loop></audio>
+
+  <script src="script.js"></script>
+</body>
+</html>

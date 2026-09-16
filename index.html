@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Something special | Hafsa The Great</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="birthday-entry" style="--hero-image: url('assets/ak.jpeg');">
+  <div class="cursor-glow"></div>
+  <div class="floating-bg"></div>
+
+  <nav class="navbar glass locked-nav" id="siteNav" aria-label="Main navigation">
+    <a href="index.html" class="logo">Hafsa The Great</a>
+    <div class="nav-links">
+      <a href="cake.html">Cake</a>
+      <a href="memories.html">Story</a>
+      <a href="reasons.html">Reasons</a>
+      <a href="letter.html">Letter</a>
+      <a href="quiz.html">Quiz</a>
+      <a href="final.html">Final</a>
+    </div>
+  </nav>
+
+  <main class="entry-main">
+    <section class="lock-screen" id="lockScreen">
+      <div class="lock-copy reveal">
+        <p class="script-text">something special is waiting for you</p>
+        <h1>Not yet...<br><span>but soon.</span></h1>
+        <p class="hero-desc">This little universe opens when your birthday begins.</p>
+      </div>
+
+      <aside class="countdown-card glass reveal delay-1">
+        <p class="script-text">the countdown</p>
+        <div class="countdown" id="countdown" aria-live="polite">
+          <div><strong id="days">00</strong><span>Days</span></div>
+          <div><strong id="hours">00</strong><span>Hours</span></div>
+          <div><strong id="mins">00</strong><span>Mins</span></div>
+          <div><strong id="secs">00</strong><span>Secs</span></div>
+        </div>
+        <p class="unlock-note">Come back at midnight. 🎂</p>
+      </aside>
+    </section>
+
+    <section class="birthday-reveal" id="birthdayReveal" aria-hidden="true">
+      <div class="reveal-copy">
+        <p class="script-text" id="revealKicker">midnight has arrived</p>
+        <h2>Hafsa The Great,<br><span>your turn.</span></h2>
+        <p id="revealMessage">But before you see the rest, there is one very important thing to do.</p>
+      </div>
+
+      <div class="avatar-celebration" aria-hidden="true">
+        <img src="assets/hafsa-avatar.png" alt="" />
+        <span class="avatar-sparkle sparkle-one">✦</span>
+        <span class="avatar-sparkle sparkle-two">✧</span>
+        <span class="avatar-sparkle sparkle-three">✦</span>
+      </div>
+
+      <div class="biryani-cake-wrap" id="biryaniCakeWrap">
+        <div class="cake-image-stage" id="biryaniCake">
+          <img class="approved-biryani-image" src="assets/biryani-plate-sticker.png" alt="A plate of biryani prepared for Hafsa The Great" />
+          <button class="candle-hotspot" id="entryCandle" type="button" aria-label="Blow out the candle">
+            <span class="candle-stick" aria-hidden="true"></span>
+            <span class="hotspot-flame" id="entryFlame" aria-hidden="true"></span>
+          </button>
+          <div class="smoke-overlay" aria-hidden="true"></div>
+          <p class="biryani-exclusive-note">exclusive biryani cake, just for you ✦</p>
+        </div>
+        <p class="candle-prompt" id="candlePrompt">Make a wish. Then tap the candle. 🕯️</p>
+        <button class="btn primary reveal-button" id="enterBirthday" type="button" disabled>Enter the birthday →</button>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
