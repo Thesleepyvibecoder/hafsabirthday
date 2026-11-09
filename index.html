@@ -19,7 +19,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="birthday-entry" style="--hero-image: url('assets/ak.jpeg');">
+<body class="birthday-entry gate-active" style="--hero-image: url('assets/ak.jpeg');">
+<section class="after-hours-gate" id="afterHoursGate" aria-labelledby="gateTitle">
+  <div class="gate-grain" aria-hidden="true"></div>
+  <div class="gate-content">
+    <p class="gate-eyebrow">A message from the archives</p>
+    <p class="gate-overline">THE DATE HAS PASSED.</p>
+    <h1 id="gateTitle">Your birthday<br><span>is already over.</span></h1>
+    <p class="gate-question">Why are you still here?</p>
+    <div class="gate-rule" aria-hidden="true"><span>✦</span></div>
+    <p class="gate-copy">The candles have gone out. The celebrations are over.<br>And yet, somehow, you've found your way back.</p>
+    <p class="gate-invitation">If you're still curious about what's inside,</p>
+    <button class="gate-enter" id="gateEnter" type="button">
+      <span>Fine. Let me in.</span><span aria-hidden="true">↗</span>
+    </button>
+    <p class="gate-footnote">YOU WERE WARNED.</p>
+  </div>
+</section>
+
   <div class="cursor-glow"></div>
   <div class="floating-bg"></div>
 
@@ -86,5 +103,20 @@
   </main>
 
   <script src="script.js"></script>
+
+<script>
+  const afterHoursGate = document.getElementById('afterHoursGate');
+  const gateEnter = document.getElementById('gateEnter');
+
+  gateEnter?.addEventListener('click', () => {
+    afterHoursGate?.classList.add('is-leaving');
+    document.body.classList.remove('gate-active');
+
+    window.setTimeout(() => {
+      afterHoursGate?.remove();
+    }, 800);
+  });
+</script>
+
 </body>
 </html>
